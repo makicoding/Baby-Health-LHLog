@@ -86,7 +86,7 @@ class CalorieEntry extends React.Component {
         
         // Validation - Section 2
         if (mealCategory === "0") {
-        document.getElementById("calorieEntryPage-errorMessage").innerText = "Please select meal category.";
+        document.getElementById("calorieEntryPage-errorMessage").innerText = "Please select time.";
         return;
         }
         // // --------------------
@@ -759,7 +759,8 @@ class CalorieEntry extends React.Component {
                                             For example a Chobani simply 100 yogurt should be entered as 
                                             "Chobani simply one hundred yogurt (100 cal)" and NOT: "Chobani simply 100 yogurt (100 cal)"
                                             */}
-                                            <option value="0"></option>
+                                            {/* <option value="0"></option> */}
+                                            <option value=""></option>
                                             <option value="Left + Right">Left + Right</option>
                                             <option value="Left">Left</option>
                                             <option value="Right">Right</option>
