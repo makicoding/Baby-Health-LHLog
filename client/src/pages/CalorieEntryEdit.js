@@ -48,21 +48,30 @@ class CalorieEntryEdit extends React.Component {
         })
 
         document.getElementById("calorieEntryPage-datepicker").value = this.state.startDate;
+        // document.getElementById("calorieEntryPage-mealCategory").value = this.state.result.mealtype;
+        // document.getElementById("calorieEntryPage-notes").value = this.state.result.comments;
+        // if (this.state.result.sectionno === "A") {
+        //     document.getElementById("calorieEntryPage-mealNameCaloriesPerSingleQuantity").value = this.state.result.mealname;
+        //     document.getElementById("calorieEntryPage-mealQuantity").value = this.state.result.qty;
+        // } else if (this.state.result.sectionno === "B") {
+        //     document.getElementById("calorieEntryPage-drinkNameCaloriesPerGlass").value = this.state.result.mealname;
+        //     document.getElementById("calorieEntryPage-drinkQuantity").value = this.state.result.qty;
+        // } else if (this.state.result.sectionno === "C") {
+        //     document.getElementById("calorieEntryPage-ingredientNameCaloriesPerGram").value = this.state.result.mealname;
+        //     document.getElementById("calorieEntryPage-ingredientGrams").value = this.state.result.qty;
+        // } else {
+        //     document.getElementById("calorieEntryPage-manualEntryName").value = this.state.result.mealname;
+        //     document.getElementById("calorieEntryPage-manualEntryCalories").value = this.state.result.unitcal;
+        // }
+
         document.getElementById("calorieEntryPage-mealCategory").value = this.state.result.mealtype;
+        document.getElementById("calorieEntryPage-mealQuantity").value = this.state.result.pee;
+        document.getElementById("calorieEntryPage-drinkQuantity").value = this.state.result.poop;
+        document.getElementById("calorieEntryPage-ingredientNameCaloriesPerGram").value = this.state.result.breast;
+        document.getElementById("calorieEntryPage-ingredientGrams").value = this.state.result.breastduration;
+        document.getElementById("calorieEntryPage-manualEntryCalories").value = this.state.result.formulaamount;
         document.getElementById("calorieEntryPage-notes").value = this.state.result.comments;
-        if (this.state.result.sectionno === "A") {
-            document.getElementById("calorieEntryPage-mealNameCaloriesPerSingleQuantity").value = this.state.result.mealname;
-            document.getElementById("calorieEntryPage-mealQuantity").value = this.state.result.qty;
-        } else if (this.state.result.sectionno === "B") {
-            document.getElementById("calorieEntryPage-drinkNameCaloriesPerGlass").value = this.state.result.mealname;
-            document.getElementById("calorieEntryPage-drinkQuantity").value = this.state.result.qty;
-        } else if (this.state.result.sectionno === "C") {
-            document.getElementById("calorieEntryPage-ingredientNameCaloriesPerGram").value = this.state.result.mealname;
-            document.getElementById("calorieEntryPage-ingredientGrams").value = this.state.result.qty;
-        } else {
-            document.getElementById("calorieEntryPage-manualEntryName").value = this.state.result.mealname;
-            document.getElementById("calorieEntryPage-manualEntryCalories").value = this.state.result.unitcal;
-        }
+
     }
 
     // Function to open Nutritionnix URL
@@ -93,14 +102,14 @@ class CalorieEntryEdit extends React.Component {
     validateFormData = () => {
         var dateInput = this.state.startDate;                                                        
         var mealCategory = document.getElementById("calorieEntryPage-mealCategory").value;
-        var mealNameCaloriesPerSingleQuantity = document.getElementById("calorieEntryPage-mealNameCaloriesPerSingleQuantity").value;
-        var mealQuantity = parseFloat(document.getElementById("calorieEntryPage-mealQuantity").value.trim());
-        var drinkNameCaloriesPerGlass = document.getElementById("calorieEntryPage-drinkNameCaloriesPerGlass").value.trim();
-        var drinkQuantity = parseFloat(document.getElementById("calorieEntryPage-drinkQuantity").value.trim());
+        // var mealNameCaloriesPerSingleQuantity = document.getElementById("calorieEntryPage-mealNameCaloriesPerSingleQuantity").value;
+        var mealQuantity = document.getElementById("calorieEntryPage-mealQuantity").value.trim();
+        // var drinkNameCaloriesPerGlass = document.getElementById("calorieEntryPage-drinkNameCaloriesPerGlass").value.trim();
+        var drinkQuantity = document.getElementById("calorieEntryPage-drinkQuantity").value.trim();
         var ingredientNameCaloriesPerGram = document.getElementById("calorieEntryPage-ingredientNameCaloriesPerGram").value;
-        var ingredientGrams = parseFloat(document.getElementById("calorieEntryPage-ingredientGrams").value.trim());
-        var manualEntryName = document.getElementById("calorieEntryPage-manualEntryName").value.trim();
-        var manualEntryCalories = parseFloat(document.getElementById("calorieEntryPage-manualEntryCalories").value.trim());
+        var ingredientGrams = document.getElementById("calorieEntryPage-ingredientGrams").value.trim();
+        // var manualEntryName = document.getElementById("calorieEntryPage-manualEntryName").value.trim();
+        var manualEntryCalories = document.getElementById("calorieEntryPage-manualEntryCalories").value.trim();
         var notesInput = document.getElementById("calorieEntryPage-notes").value.trim();
         
         // Validation - Section 2
@@ -111,129 +120,129 @@ class CalorieEntryEdit extends React.Component {
         // --------------------
         // Validation - Section 3
         // Section 3 - checking to see that question 1 for Part A, B, C, D are not all empty
-        else if ((mealNameCaloriesPerSingleQuantity === "0") && (drinkNameCaloriesPerGlass === "0") && (ingredientNameCaloriesPerGram === "0") && (manualEntryName === "")) {
-        document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out section 3.";
-        return;
-        }
-        // Section 3 - checking to see if question 1 has been filled out for other parts besides Part A
-        else if ((mealNameCaloriesPerSingleQuantity !== "0") && (drinkNameCaloriesPerGlass !== "0")) {
-            document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
-            return;
-        }
-        else if ((mealNameCaloriesPerSingleQuantity !== "0") && (ingredientNameCaloriesPerGram !== "0")) {
-            document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
-            return;
-        }
-        else if ((mealNameCaloriesPerSingleQuantity !== "0") && (manualEntryName !== "")) {
-            document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
-            return;
-        }
-        // Section 3 - checking to see if question 1 has been filled out for other parts besides Part B  
-        else if ((drinkNameCaloriesPerGlass !== "0") && (ingredientNameCaloriesPerGram !== "0")) {
-        document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
-            return;
-        }
-        else if ((drinkNameCaloriesPerGlass !== "0") && (manualEntryName !== "")) {
-        document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
-            return;
-        }
-        // Section 3 - checking to see if question 1 has been filled out for other parts besides Part C
-        else if ((ingredientNameCaloriesPerGram !== "0") && (manualEntryName !== "")) {
-        document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
-            return;
-        }
-        // --------------------
-        // Validation - Section 3  
-        // Section 3 - checking to see if Part A question 2 is a number
-        else if ( 
-                (mealNameCaloriesPerSingleQuantity !== "0") && 
-                (drinkNameCaloriesPerGlass === "0") && (ingredientNameCaloriesPerGram === "0") && (manualEntryName === "") &&
-                (isNaN(mealQuantity))
-                ) {
-                document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out quantity for section 3 part A.";
-                return;
-        }
-        // Section 3 - checking to see if Part B question 2 is a number
-        else if ( 
-                (drinkNameCaloriesPerGlass !== "0") && 
-                (mealNameCaloriesPerSingleQuantity === "0") && (ingredientNameCaloriesPerGram === "0") && (manualEntryName === "") &&
-                (isNaN(drinkQuantity))
-                ) {
-                document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out quantity for section 3 part B.";
-                return;
-        }
-        // Section 3 - checking to see if Part C question 2 is a number
-        else if ( 
-                (ingredientNameCaloriesPerGram !== "0") && 
-                (mealNameCaloriesPerSingleQuantity === "0") && (drinkNameCaloriesPerGlass === "0") && (manualEntryName === "") &&
-                (isNaN(ingredientGrams))
-                ) {
-                document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out number of grams for section 3 part C.";
-                return;
-        }
-        // Section 3 - checking to see if Part D question 2 is a number
-        else if ( 
-                (manualEntryName !== "") && 
-                (mealNameCaloriesPerSingleQuantity === "0") && (drinkNameCaloriesPerGlass === "0") && (ingredientNameCaloriesPerGram === "0") &&
-                (isNaN(manualEntryCalories))
-                ) {
-                document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out number of calories for section 3 part D.";
-                return;
-        }
-        // --------------------
-        // Validation - Section 3  
-        // Section 3 - checking to see if question 2 has been filled out for other parts besides Part A
-        else if (((mealNameCaloriesPerSingleQuantity !== "0") && (mealQuantity > 0)) && drinkQuantity > 0) {
-            document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
-            return;
-        }
-        else if (((mealNameCaloriesPerSingleQuantity !== "0") && (mealQuantity > 0)) && ingredientGrams > 0) {
-            document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
-            return;
-        }
-        else if (((mealNameCaloriesPerSingleQuantity !== "0") && (mealQuantity > 0)) && manualEntryCalories > 0) {
-            document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
-            return;
-        }
-        // Section 3 - checking to see if question 2 has been filled out for other parts besides Part B
-        else if (((drinkNameCaloriesPerGlass !== "0") && (drinkQuantity > 0)) && mealQuantity > 0) {
-            document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
-            return;
-        }
-        else if (((drinkNameCaloriesPerGlass !== "0") && (drinkQuantity > 0)) && ingredientGrams > 0) {
-            document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
-            return;
-        }
-        else if (((drinkNameCaloriesPerGlass !== "0") && (drinkQuantity > 0)) && manualEntryCalories > 0) {
-            document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
-            return;
-        }
-        // Section 3 - checking to see if question 2 has been filled out for other parts besides Part C
-        else if (((ingredientNameCaloriesPerGram !== "0") && (ingredientGrams > 0)) && mealQuantity > 0) {
-            document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
-            return;
-        }
-        else if (((ingredientNameCaloriesPerGram !== "0") && (ingredientGrams > 0)) && drinkQuantity > 0) {
-            document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
-            return;
-        }
-        else if (((ingredientNameCaloriesPerGram !== "0") && (ingredientGrams > 0)) && manualEntryCalories > 0) {
-            document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
-            return;
-        }
-        // Section 3 - checking to see if question 2 has been filled out for other parts besides Part D
-        else if (((manualEntryName !== "0") && (manualEntryCalories > 0)) && mealQuantity > 0) {
-            document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
-            return;
-        }
-        else if (((manualEntryName !== "0") && (manualEntryCalories > 0)) && drinkQuantity > 0) {
-            document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
-            return;
-        }
-        else if (((manualEntryName !== "0") && (manualEntryCalories > 0)) && ingredientGrams > 0) {
-            document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
-            return;
-        }
+        // else if ((mealNameCaloriesPerSingleQuantity === "0") && (drinkNameCaloriesPerGlass === "0") && (ingredientNameCaloriesPerGram === "0") && (manualEntryName === "")) {
+        // document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out section 3.";
+        // return;
+        // }
+        // // Section 3 - checking to see if question 1 has been filled out for other parts besides Part A
+        // else if ((mealNameCaloriesPerSingleQuantity !== "0") && (drinkNameCaloriesPerGlass !== "0")) {
+        //     document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
+        //     return;
+        // }
+        // else if ((mealNameCaloriesPerSingleQuantity !== "0") && (ingredientNameCaloriesPerGram !== "0")) {
+        //     document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
+        //     return;
+        // }
+        // else if ((mealNameCaloriesPerSingleQuantity !== "0") && (manualEntryName !== "")) {
+        //     document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
+        //     return;
+        // }
+        // // Section 3 - checking to see if question 1 has been filled out for other parts besides Part B  
+        // else if ((drinkNameCaloriesPerGlass !== "0") && (ingredientNameCaloriesPerGram !== "0")) {
+        // document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
+        //     return;
+        // }
+        // else if ((drinkNameCaloriesPerGlass !== "0") && (manualEntryName !== "")) {
+        // document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
+        //     return;
+        // }
+        // // Section 3 - checking to see if question 1 has been filled out for other parts besides Part C
+        // else if ((ingredientNameCaloriesPerGram !== "0") && (manualEntryName !== "")) {
+        // document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
+        //     return;
+        // }
+        // // --------------------
+        // // Validation - Section 3  
+        // // Section 3 - checking to see if Part A question 2 is a number
+        // else if ( 
+        //         (mealNameCaloriesPerSingleQuantity !== "0") && 
+        //         (drinkNameCaloriesPerGlass === "0") && (ingredientNameCaloriesPerGram === "0") && (manualEntryName === "") &&
+        //         (isNaN(mealQuantity))
+        //         ) {
+        //         document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out quantity for section 3 part A.";
+        //         return;
+        // }
+        // // Section 3 - checking to see if Part B question 2 is a number
+        // else if ( 
+        //         (drinkNameCaloriesPerGlass !== "0") && 
+        //         (mealNameCaloriesPerSingleQuantity === "0") && (ingredientNameCaloriesPerGram === "0") && (manualEntryName === "") &&
+        //         (isNaN(drinkQuantity))
+        //         ) {
+        //         document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out quantity for section 3 part B.";
+        //         return;
+        // }
+        // // Section 3 - checking to see if Part C question 2 is a number
+        // else if ( 
+        //         (ingredientNameCaloriesPerGram !== "0") && 
+        //         (mealNameCaloriesPerSingleQuantity === "0") && (drinkNameCaloriesPerGlass === "0") && (manualEntryName === "") &&
+        //         (isNaN(ingredientGrams))
+        //         ) {
+        //         document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out number of grams for section 3 part C.";
+        //         return;
+        // }
+        // // Section 3 - checking to see if Part D question 2 is a number
+        // else if ( 
+        //         (manualEntryName !== "") && 
+        //         (mealNameCaloriesPerSingleQuantity === "0") && (drinkNameCaloriesPerGlass === "0") && (ingredientNameCaloriesPerGram === "0") &&
+        //         (isNaN(manualEntryCalories))
+        //         ) {
+        //         document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out number of calories for section 3 part D.";
+        //         return;
+        // }
+        // // --------------------
+        // // Validation - Section 3  
+        // // Section 3 - checking to see if question 2 has been filled out for other parts besides Part A
+        // else if (((mealNameCaloriesPerSingleQuantity !== "0") && (mealQuantity > 0)) && drinkQuantity > 0) {
+        //     document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
+        //     return;
+        // }
+        // else if (((mealNameCaloriesPerSingleQuantity !== "0") && (mealQuantity > 0)) && ingredientGrams > 0) {
+        //     document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
+        //     return;
+        // }
+        // else if (((mealNameCaloriesPerSingleQuantity !== "0") && (mealQuantity > 0)) && manualEntryCalories > 0) {
+        //     document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
+        //     return;
+        // }
+        // // Section 3 - checking to see if question 2 has been filled out for other parts besides Part B
+        // else if (((drinkNameCaloriesPerGlass !== "0") && (drinkQuantity > 0)) && mealQuantity > 0) {
+        //     document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
+        //     return;
+        // }
+        // else if (((drinkNameCaloriesPerGlass !== "0") && (drinkQuantity > 0)) && ingredientGrams > 0) {
+        //     document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
+        //     return;
+        // }
+        // else if (((drinkNameCaloriesPerGlass !== "0") && (drinkQuantity > 0)) && manualEntryCalories > 0) {
+        //     document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
+        //     return;
+        // }
+        // // Section 3 - checking to see if question 2 has been filled out for other parts besides Part C
+        // else if (((ingredientNameCaloriesPerGram !== "0") && (ingredientGrams > 0)) && mealQuantity > 0) {
+        //     document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
+        //     return;
+        // }
+        // else if (((ingredientNameCaloriesPerGram !== "0") && (ingredientGrams > 0)) && drinkQuantity > 0) {
+        //     document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
+        //     return;
+        // }
+        // else if (((ingredientNameCaloriesPerGram !== "0") && (ingredientGrams > 0)) && manualEntryCalories > 0) {
+        //     document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
+        //     return;
+        // }
+        // // Section 3 - checking to see if question 2 has been filled out for other parts besides Part D
+        // else if (((manualEntryName !== "0") && (manualEntryCalories > 0)) && mealQuantity > 0) {
+        //     document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
+        //     return;
+        // }
+        // else if (((manualEntryName !== "0") && (manualEntryCalories > 0)) && drinkQuantity > 0) {
+        //     document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
+        //     return;
+        // }
+        // else if (((manualEntryName !== "0") && (manualEntryCalories > 0)) && ingredientGrams > 0) {
+        //     document.getElementById("calorieEntryPage-errorMessage").innerText = "Please fill out only ONE part of section 3. Fill out either part A, B, C or D only.";
+        //     return;
+        // }
         // The following else statement is creating a data object and empties the error-message field once it passes all validation
         else {
             //section #, mealname, qty, cal
@@ -241,43 +250,76 @@ class CalorieEntryEdit extends React.Component {
             var strMealName;
             var strQty;
             var strCal;
+            var strPee;
+            var strPoop;
+            var strBreast;
+            var strBreastDuration;
+            var strFormulaAmount;
 
             // Section A information
-            if (mealNameCaloriesPerSingleQuantity.trim()!="" && mealNameCaloriesPerSingleQuantity.trim()!=0){
-                var sectionNumber = "A";
-                strMealName = mealNameCaloriesPerSingleQuantity;
-                strQty = mealQuantity;
-                strCal = this.parseCalorie(strMealName);
+            // if (mealNameCaloriesPerSingleQuantity.trim()!="" && mealNameCaloriesPerSingleQuantity.trim()!=0){
+            //     var sectionNumber = "A";
+            //     strMealName = mealNameCaloriesPerSingleQuantity;
+            //     strQty = mealQuantity;
+            //     strCal = this.parseCalorie(strMealName);
             // Section B information
-            } else if (drinkNameCaloriesPerGlass.trim()!="" && drinkNameCaloriesPerGlass.trim()!=0){
-                var sectionNumber = "B";
-                strMealName = drinkNameCaloriesPerGlass;
-                strQty = drinkQuantity;
-                strCal = this.parseCalorie(strMealName);
+            // } else if (drinkNameCaloriesPerGlass.trim()!="" && drinkNameCaloriesPerGlass.trim()!=0){
+            //     var sectionNumber = "B";
+            //     strMealName = drinkNameCaloriesPerGlass;
+            //     strQty = drinkQuantity;
+            //     strCal = this.parseCalorie(strMealName);
             // Section C information
-            } else if (ingredientNameCaloriesPerGram.trim()!="" && ingredientNameCaloriesPerGram.trim()!=0){
-                var sectionNumber = "C";
-                strMealName = ingredientNameCaloriesPerGram;
-                strQty = ingredientGrams;
-                strCal = this.parseCalorie(strMealName);
+            // } else if (ingredientNameCaloriesPerGram.trim()!="" && ingredientNameCaloriesPerGram.trim()!=0){
+            //     var sectionNumber = "C";
+            //     strMealName = ingredientNameCaloriesPerGram;
+            //     strQty = ingredientGrams;
+            //     strCal = this.parseCalorie(strMealName);
             // Section D information
-            } else if (manualEntryName.trim()!=""){
-                var sectionNumber = "D";
-                strMealName = manualEntryName;
-                strQty = 1;
-                strCal = manualEntryCalories;
-            }
+            // } else if (manualEntryName.trim()!=""){
+            //     var sectionNumber = "D";
+            //     strMealName = manualEntryName;
+            //     strQty = 1;
+            //     strCal = manualEntryCalories;
+            // }
+
+            // Section A information
+            var sectionNumber = "A";
+            // strMealName = mealNameCaloriesPerSingleQuantity;
+            strPee = mealQuantity;
+            strCal = this.strMealName;
+            // Section B information
+            var sectionNumber = "B";
+            // strMealName = drinkNameCaloriesPerGlass;
+            strPoop = drinkQuantity;
+            strCal = this.strMealName;
+            // Section C information
+            var sectionNumber = "C";
+            strBreast = ingredientNameCaloriesPerGram;
+            strBreastDuration = ingredientGrams;
+            strCal = this.strMealName;
+            // Section D information
+            var sectionNumber = "D";
+            // strMealName = manualEntryName;
+            strQty = 1;
+            strFormulaAmount = manualEntryCalories;
 
             var data = {      
-                id: this.state.result._id,
-                username: this.state.result.username,
-                date: dateInput,
-                mealtype: mealCategory,
-                sectionno: sectionNumber,
-                mealname: strMealName,
-                qty:parseFloat(strQty),
-                unitcal: parseFloat(strCal),
-                comments: notesInput
+            id: this.state.result._id,
+            username: this.state.result.username,
+            date: dateInput,
+            mealtype: mealCategory,
+            sectionno: sectionNumber,
+            mealname: strMealName,
+            // qty:parseFloat(strQty),
+            // unitcal: parseFloat(strCal),
+            qty: strQty,
+            unitcal: strCal,
+            pee: strPee,
+            poop: strPoop,
+            breast: strBreast,
+            breastduration: strBreastDuration,
+            formulaamount: strFormulaAmount,
+            comments: notesInput
             };
 
             // Calling the post method
@@ -285,13 +327,13 @@ class CalorieEntryEdit extends React.Component {
 
             // Clear the form when submitting and show a success message
             document.getElementById("calorieEntryPage-mealCategory").value = "0";
-            document.getElementById("calorieEntryPage-mealNameCaloriesPerSingleQuantity").value = "0";
+            // document.getElementById("calorieEntryPage-mealNameCaloriesPerSingleQuantity").value = "0";
             document.getElementById("calorieEntryPage-mealQuantity").value = "";
-            document.getElementById("calorieEntryPage-drinkNameCaloriesPerGlass").value = "0";
+            // document.getElementById("calorieEntryPage-drinkNameCaloriesPerGlass").value = "0";
             document.getElementById("calorieEntryPage-drinkQuantity").value = "";
             document.getElementById("calorieEntryPage-ingredientNameCaloriesPerGram").value = "0";
             document.getElementById("calorieEntryPage-ingredientGrams").value = "";
-            document.getElementById("calorieEntryPage-manualEntryName").value = "";
+            // document.getElementById("calorieEntryPage-manualEntryName").value = "";
             document.getElementById("calorieEntryPage-manualEntryCalories").value = "";
             document.getElementById("calorieEntryPage-notes").value = "";
             document.getElementById("calorieEntryPage-successMessage").innerText = "Data updated successfully!";
@@ -333,13 +375,13 @@ class CalorieEntryEdit extends React.Component {
                             <Col size="col-md-6 offset-md-3">           
 
                                 {/* Subrow */}
-                                <Row>
+                                {/* <Row>
                                     <Col size="col-md-12">
                                         <p className="sectionTitle">Enter data:</p>
                                     </Col>
                                 </Row> 
 
-                                <Br />
+                                <Br /> */}
 
                                 {/* ------------------------------ */}
                                 {/* Subrow (FORM SECTION 1) */}
@@ -378,12 +420,104 @@ class CalorieEntryEdit extends React.Component {
                                         <p className="mainContentTextBlack">Please select time:</p>
                                         <select className="chosen-select dropDownMenu1" id="calorieEntryPage-mealCategory">
                                             <option value="0"></option>
+                                            {/* AM */}
                                             <option value="01 12:00am">12:00am</option>
                                             <option value="02 12:15am">12:15am</option>
                                             <option value="03 12:30am">12:30am</option>
                                             <option value="04 12:45am">12:45am</option>
                                             <option value="05 1:00am">1:00am</option>
                                             <option value="06 1:15am">1:15am</option>
+                                            <option value="07 1:30am">1:30am</option>
+                                            <option value="08 1:45am">1:45am</option>
+                                            <option value="09 2:00am">2:00am</option>
+                                            <option value="10 2:15am">2:15am</option>
+                                            <option value="11 2:30am">2:30am</option>
+                                            <option value="12 2:45am">2:45am</option>
+                                            <option value="13 3:00am">3:00am</option>
+                                            <option value="14 3:15am">3:15am</option>
+                                            <option value="15 3:30am">3:30am</option>
+                                            <option value="16 3:45am">3:45am</option>
+                                            <option value="17 4:00am">4:00am</option>
+                                            <option value="18 4:15am">4:15am</option>
+                                            <option value="19 4:30am">4:30am</option>
+                                            <option value="20 4:45am">4:45am</option>
+                                            <option value="21 5:00am">5:00am</option>
+                                            <option value="22 5:15am">5:15am</option>
+                                            <option value="23 5:30am">5:30am</option>
+                                            <option value="24 5:45am">5:45am</option>
+                                            <option value="25 6:00am">6:00am</option>
+                                            <option value="26 6:15am">6:15am</option>
+                                            <option value="27 6:30am">6:30am</option>
+                                            <option value="28 6:45am">6:45am</option>
+                                            <option value="29 7:00am">7:00am</option>
+                                            <option value="30 7:15am">7:15am</option>
+                                            <option value="31 7:30am">7:30am</option>
+                                            <option value="32 7:45am">7:45am</option>
+                                            <option value="33 8:00am">8:00am</option>
+                                            <option value="34 8:15am">8:15am</option>
+                                            <option value="35 8:30am">8:30am</option>
+                                            <option value="36 8:45am">8:45am</option>
+                                            <option value="37 9:00am">9:00am</option>
+                                            <option value="38 9:15am">9:15am</option>
+                                            <option value="39 9:30am">9:30am</option>
+                                            <option value="40 9:45am">9:45am</option>
+                                            <option value="41 10:00am">10:00am</option>
+                                            <option value="42 10:15am">10:15am</option>
+                                            <option value="43 10:30am">10:30am</option>
+                                            <option value="44 10:45am">10:45am</option>
+                                            <option value="45 11:00am">11:00am</option>
+                                            <option value="46 11:15am">11:15am</option>
+                                            <option value="47 11:30am">11:30am</option>
+                                            <option value="48 11:45am">11:45am</option>
+                                            {/* PM */}
+                                            <option value="49 12:00pm">12:00pm</option>
+                                            <option value="50 12:15pm">12:15pm</option>
+                                            <option value="51 12:30pm">12:30pm</option>
+                                            <option value="52 12:45pm">12:45pm</option>
+                                            <option value="53 1:00pm">1:00pm</option>
+                                            <option value="54 1:15pm">1:15pm</option>
+                                            <option value="55 1:30pm">1:30pm</option>
+                                            <option value="56 1:45pm">1:45pm</option>
+                                            <option value="57 2:00pm">2:00pm</option>
+                                            <option value="58 2:15pm">2:15pm</option>
+                                            <option value="59 2:30pm">2:30pm</option>
+                                            <option value="60 2:45pm">2:45pm</option>
+                                            <option value="61 3:00pm">3:00pm</option>
+                                            <option value="62 3:15pm">3:15pm</option>
+                                            <option value="63 3:30pm">3:30pm</option>
+                                            <option value="64 3:45pm">3:45pm</option>
+                                            <option value="65 4:00pm">4:00pm</option>
+                                            <option value="66 4:15pm">4:15pm</option>
+                                            <option value="67 4:30pm">4:30pm</option>
+                                            <option value="68 4:45pm">4:45pm</option>
+                                            <option value="69 5:00pm">5:00pm</option>
+                                            <option value="70 5:15pm">5:15pm</option>
+                                            <option value="71 5:30pm">5:30pm</option>
+                                            <option value="72 5:45pm">5:45pm</option>
+                                            <option value="73 6:00pm">6:00pm</option>
+                                            <option value="74 6:15pm">6:15pm</option>
+                                            <option value="75 6:30pm">6:30pm</option>
+                                            <option value="76 6:45pm">6:45pm</option>
+                                            <option value="77 7:00pm">7:00pm</option>
+                                            <option value="78 7:15pm">7:15pm</option>
+                                            <option value="79 7:30pm">7:30pm</option>
+                                            <option value="80 7:45pm">7:45pm</option>
+                                            <option value="81 8:00pm">8:00pm</option>
+                                            <option value="82 8:15pm">8:15pm</option>
+                                            <option value="83 8:30pm">8:30pm</option>
+                                            <option value="84 8:45pm">8:45pm</option>
+                                            <option value="85 9:00pm">9:00pm</option>
+                                            <option value="86 9:15pm">9:15pm</option>
+                                            <option value="87 9:30pm">9:30pm</option>
+                                            <option value="88 9:45pm">9:45pm</option>
+                                            <option value="89 10:00pm">10:00pm</option>
+                                            <option value="90 10:15pm">10:15pm</option>
+                                            <option value="91 10:30pm">10:30pm</option>
+                                            <option value="92 10:45pm">10:45pm</option>
+                                            <option value="93 11:00pm">11:00pm</option>
+                                            <option value="94 11:15pm">11:15pm</option>
+                                            <option value="95 11:30pm">11:30pm</option>
+                                            <option value="96 11:45pm">11:45pm</option>
                                         </select>
                                     </Col>
                                 </Row> 

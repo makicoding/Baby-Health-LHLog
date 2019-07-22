@@ -123,13 +123,13 @@ class CalorieData extends React.Component {
                             <Col size="col-md-6 offset-md-3">           
 
                                 {/* Subrow */}
-                                <Row>
+                                {/* <Row>
                                     <Col size="col-md-12">
                                         <p className="sectionTitle">Retrieve data:</p>
                                     </Col>
                                 </Row> 
 
-                                <Br />
+                                <Br /> */}
 
                                 {/* ------------------------------ */}
                                 {/* Subrow */}

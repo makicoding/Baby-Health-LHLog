@@ -18,7 +18,7 @@ import API from "../utils/API";
 // Run "npm i" or "npm i [specific component name]" in the command line if there are any dependencies missing in the node modules folder.
 
 // Setting username to be Guest in cookies
-localStorage.setItem("username", "Guest");   // Delete this line in production (however for single user version, keep this line)
+localStorage.setItem("username", "Leyna");   // Delete this line in production (however for single user version, keep this line)
 // Grabbing username from cookies
 var userName = localStorage.getItem("username");
 
@@ -347,13 +347,13 @@ class CalorieEntry extends React.Component {
                             <Col size="col-md-6 offset-md-3">           
 
                                 {/* Subrow */}
-                                <Row>
+                                {/* <Row>
                                     <Col size="col-md-12">
                                         <p className="sectionTitle">Enter data:</p>
                                     </Col>
                                 </Row> 
 
-                                <Br />
+                                <Br /> */}
 
                                 {/* ------------------------------ */}
                                 {/* Subrow (FORM SECTION 1) */}
@@ -392,12 +392,104 @@ class CalorieEntry extends React.Component {
                                         <p className="mainContentTextBlack">Please select time:</p>
                                         <select className="chosen-select dropDownMenu1" id="calorieEntryPage-mealCategory">
                                             <option value="0"></option>
+                                            {/* AM */}
                                             <option value="01 12:00am">12:00am</option>
                                             <option value="02 12:15am">12:15am</option>
                                             <option value="03 12:30am">12:30am</option>
                                             <option value="04 12:45am">12:45am</option>
                                             <option value="05 1:00am">1:00am</option>
                                             <option value="06 1:15am">1:15am</option>
+                                            <option value="07 1:30am">1:30am</option>
+                                            <option value="08 1:45am">1:45am</option>
+                                            <option value="09 2:00am">2:00am</option>
+                                            <option value="10 2:15am">2:15am</option>
+                                            <option value="11 2:30am">2:30am</option>
+                                            <option value="12 2:45am">2:45am</option>
+                                            <option value="13 3:00am">3:00am</option>
+                                            <option value="14 3:15am">3:15am</option>
+                                            <option value="15 3:30am">3:30am</option>
+                                            <option value="16 3:45am">3:45am</option>
+                                            <option value="17 4:00am">4:00am</option>
+                                            <option value="18 4:15am">4:15am</option>
+                                            <option value="19 4:30am">4:30am</option>
+                                            <option value="20 4:45am">4:45am</option>
+                                            <option value="21 5:00am">5:00am</option>
+                                            <option value="22 5:15am">5:15am</option>
+                                            <option value="23 5:30am">5:30am</option>
+                                            <option value="24 5:45am">5:45am</option>
+                                            <option value="25 6:00am">6:00am</option>
+                                            <option value="26 6:15am">6:15am</option>
+                                            <option value="27 6:30am">6:30am</option>
+                                            <option value="28 6:45am">6:45am</option>
+                                            <option value="29 7:00am">7:00am</option>
+                                            <option value="30 7:15am">7:15am</option>
+                                            <option value="31 7:30am">7:30am</option>
+                                            <option value="32 7:45am">7:45am</option>
+                                            <option value="33 8:00am">8:00am</option>
+                                            <option value="34 8:15am">8:15am</option>
+                                            <option value="35 8:30am">8:30am</option>
+                                            <option value="36 8:45am">8:45am</option>
+                                            <option value="37 9:00am">9:00am</option>
+                                            <option value="38 9:15am">9:15am</option>
+                                            <option value="39 9:30am">9:30am</option>
+                                            <option value="40 9:45am">9:45am</option>
+                                            <option value="41 10:00am">10:00am</option>
+                                            <option value="42 10:15am">10:15am</option>
+                                            <option value="43 10:30am">10:30am</option>
+                                            <option value="44 10:45am">10:45am</option>
+                                            <option value="45 11:00am">11:00am</option>
+                                            <option value="46 11:15am">11:15am</option>
+                                            <option value="47 11:30am">11:30am</option>
+                                            <option value="48 11:45am">11:45am</option>
+                                            {/* PM */}
+                                            <option value="49 12:00pm">12:00pm</option>
+                                            <option value="50 12:15pm">12:15pm</option>
+                                            <option value="51 12:30pm">12:30pm</option>
+                                            <option value="52 12:45pm">12:45pm</option>
+                                            <option value="53 1:00pm">1:00pm</option>
+                                            <option value="54 1:15pm">1:15pm</option>
+                                            <option value="55 1:30pm">1:30pm</option>
+                                            <option value="56 1:45pm">1:45pm</option>
+                                            <option value="57 2:00pm">2:00pm</option>
+                                            <option value="58 2:15pm">2:15pm</option>
+                                            <option value="59 2:30pm">2:30pm</option>
+                                            <option value="60 2:45pm">2:45pm</option>
+                                            <option value="61 3:00pm">3:00pm</option>
+                                            <option value="62 3:15pm">3:15pm</option>
+                                            <option value="63 3:30pm">3:30pm</option>
+                                            <option value="64 3:45pm">3:45pm</option>
+                                            <option value="65 4:00pm">4:00pm</option>
+                                            <option value="66 4:15pm">4:15pm</option>
+                                            <option value="67 4:30pm">4:30pm</option>
+                                            <option value="68 4:45pm">4:45pm</option>
+                                            <option value="69 5:00pm">5:00pm</option>
+                                            <option value="70 5:15pm">5:15pm</option>
+                                            <option value="71 5:30pm">5:30pm</option>
+                                            <option value="72 5:45pm">5:45pm</option>
+                                            <option value="73 6:00pm">6:00pm</option>
+                                            <option value="74 6:15pm">6:15pm</option>
+                                            <option value="75 6:30pm">6:30pm</option>
+                                            <option value="76 6:45pm">6:45pm</option>
+                                            <option value="77 7:00pm">7:00pm</option>
+                                            <option value="78 7:15pm">7:15pm</option>
+                                            <option value="79 7:30pm">7:30pm</option>
+                                            <option value="80 7:45pm">7:45pm</option>
+                                            <option value="81 8:00pm">8:00pm</option>
+                                            <option value="82 8:15pm">8:15pm</option>
+                                            <option value="83 8:30pm">8:30pm</option>
+                                            <option value="84 8:45pm">8:45pm</option>
+                                            <option value="85 9:00pm">9:00pm</option>
+                                            <option value="86 9:15pm">9:15pm</option>
+                                            <option value="87 9:30pm">9:30pm</option>
+                                            <option value="88 9:45pm">9:45pm</option>
+                                            <option value="89 10:00pm">10:00pm</option>
+                                            <option value="90 10:15pm">10:15pm</option>
+                                            <option value="91 10:30pm">10:30pm</option>
+                                            <option value="92 10:45pm">10:45pm</option>
+                                            <option value="93 11:00pm">11:00pm</option>
+                                            <option value="94 11:15pm">11:15pm</option>
+                                            <option value="95 11:30pm">11:30pm</option>
+                                            <option value="96 11:45pm">11:45pm</option>
                                         </select>
                                     </Col>
                                 </Row> 
