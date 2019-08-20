@@ -53,13 +53,21 @@
 /* (375px is viewport width of iPhone X in vertical) */
 @media screen and (max-width: 750px) {
 
-    .backgroundImage {
+    /* .backgroundImage {
         width: auto;
         height: 104%;
 
         position: fixed;
         top: -20px;
-        left: -230px;
+        left: -230px; */
+
+        .backgroundImage {
+        width: auto;
+        height: 104%;
+
+        position: fixed;
+        top: -20px;
+        left: -140px;
     }
 
 }
@@ -94,7 +102,7 @@
 
         position: fixed;
         top: -20px;
-        left: -130px;
+        left: -100px;
     }
 
 }

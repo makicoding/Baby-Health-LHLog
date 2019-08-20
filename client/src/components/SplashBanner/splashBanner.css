@@ -23,6 +23,7 @@
 
     position: relative;
     top: 2px;
+    left: -4px;     /* To compensate for the italic text */
 }
 
 .splashDescription {
