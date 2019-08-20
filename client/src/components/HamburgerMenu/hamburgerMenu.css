@@ -7,7 +7,10 @@
 
     width: 100%;
     height: 54px;
-    background-color: #4569FF;
+    /* background-color: #4569FF; */
+    /* background-color: rgb(35, 205, 235); */
+    /* background-color: rgb(35, 182, 235); */
+    background-color: rgb(50, 193, 245);
 
     position: fixed;
     top: 0;
@@ -22,13 +25,16 @@
     width: 250px;
 
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: 'Leckerli One', cursive;
     font-weight: 700;
     font-style: italic;
-    font-size: 40px;
+    /* font-size: 40px; */
+    font-size: 37px;
 
     position: fixed;
-    top: -1px;
+    /* top: -1px; */
+    top: 0px;
     left: 10px;
 }
 
@@ -54,7 +60,8 @@
 
 /* Style the hamburger menu */
 .topnav a.icon {
-    background: #FFAB0A;
+    /* background: #FFAB0A; */
+    background-color: rgb(30, 70, 230);
     
     position: fixed;
     right: 0px;
@@ -63,7 +70,11 @@
 
 /* Add a background color on mouse-over */
 .topnav a:hover {
-    background-color: #2AC940;
+    /* background-color: #2AC940; */
+    /* background-color: #4569FF; */
+    /* background-color: rgb(28, 66, 218); */
+    /* background-color: rgb(30, 70, 230); */
+    background: #FFAB0A;
     color: white;
     text-decoration: none;
 }
@@ -79,7 +90,9 @@
     
     /* background-color: #4569FF;
     opacity: 1; */
-    background-color: rgb(39, 82, 255);     /* Color slightly darkened to compensate for opacity */
+    /* background-color: rgb(39, 82, 255);     Color slightly darkened to compensate for opacity */
+    /* background-color: rgb(28, 66, 218); */
+    background-color: rgb(23, 59, 202);
     opacity: 0.9;
     
     overflow-x: hidden; /* Disable horizontal scroll */

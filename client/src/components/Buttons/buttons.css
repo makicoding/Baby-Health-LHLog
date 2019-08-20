@@ -9,9 +9,12 @@
     border-radius: 5px;
     margin: 0px 0px 15px 0px;
   
-    background-color: #4569FF;
+    /* background-color: #4569FF; */
+    /* background-color: rgb(28, 66, 218); */
+    background-color: rgb(30, 70, 230);
     color: white;
     font-family: Arial, Helvetica, sans-serif;
+    /* font-family: 'Fredoka One', cursive; */
     font-style: italic;
     font-size: 20px;
     text-align: center;
@@ -24,7 +27,9 @@
 }
   
 .button1:hover {
-    background-color: #2AC940;
+    /* background-color: #2AC940; */
+    /* background-color: rgb(28, 66, 218); */
+    background-color: rgb(23, 58, 199);
     color: white;
 }
 
@@ -87,7 +92,8 @@
     border-radius: 5px;
     margin: 0px 5px 15px 0px;
     
-    background-color: #4569FF;
+    /* background-color: #4569FF; */
+    background-color: rgb(30, 70, 230);
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     font-style: italic;
@@ -103,7 +109,8 @@
 
 #calorieDataEdit:hover {
     /* background-color: #2AC940; */
-    background-color: rgb(28, 66, 218);
+    /* background-color: rgb(28, 66, 218); */
+    background-color: rgb(23, 58, 199);
 
     color: white;
 }
@@ -122,7 +129,9 @@
     margin: 0px 0px 15px 0px;
     
     /* background-color: rgb(249, 52, 81); */
-    background-color: rgb(249, 52, 65);
+    /* background-color: rgb(249, 52, 65); */
+    /* background-color: rgb(233, 42, 55); */
+    background-color: rgb(221, 39, 51);
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     font-style: italic;
